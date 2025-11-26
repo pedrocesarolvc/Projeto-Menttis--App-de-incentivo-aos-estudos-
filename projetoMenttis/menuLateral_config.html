@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../inicial/img/logo2.png" type="image/x-icon">
+    <title>Configurações - Menttis</title>
+    <link rel="stylesheet" href="config.css">
+</head>
+<body>
+
+<input type="checkbox" id="menulat"> 
+    
+    <header class="navbar">
+        <label for="menulat" class="menu-icon">☰</label>
+
+        <div class="logo">
+            <img src="../inicial/img/logo2.png" alt="Menttis Logo">
+            <span>Menttis</span>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar">
+        </div>
+
+        <img src="../inicial/img/sino.png" alt="sino" class="noti">
+    </header>
+
+    <nav class="menulateral">
+        <div class="topo-menu">
+            <img src="../inicial/img/logo2.png" class="logomen">
+            <h2 class="nomemenu">Menttis</h2>
+        </div>
+        <ul>
+            <li><img src="../inicial/img/juntar.png" class="icones"><a href="../grupos/juntargrupos.html"> Juntar ao grupo </a></li>
+            <li><img src="../inicial/img/criar.png" class="icones"> Criar grupo</li>
+            <li><img src="../inicial/img/config.png" class="icones"><a href="../menu lateral/config.html"> Configurações</a></li>
+            <li><img src="../inicial/img/ajuda.png" class="icones"><a href="../menu lateral/ajuda.html"> Ajuda & feedback</a></li>
+            <li><img src="../inicial/img/casa.png" class="icones"><a href="../inicial/tela.html"> Início</a></li>
+        </ul>
+        <button class="logout"><img src="../inicial/img/sair.png" class="icones"> Sair</button>
+    </nav>
+
+
+    <main class="container">
+
+        <section class="settings-form">
+            <h1>Configurações</h1>
+
+            <label>Username</label>
+            <input id="username" type="text" placeholder="Username">
+
+            <label>Email</label>
+            <input id="email" type="email" placeholder="Email">
+
+            <label>Celular</label>
+            <input id="telefone" type="text" placeholder="(  ) _____-____">
+
+            <label>Senha</label>
+            <div class="password-field">
+                <input id="senha" type="password" placeholder="Senha">
+                <span id="toggleSenha" class="toggle-eye">👁️</span>
+            </div>
+
+            <button class="btn" id="salvarBtn">Salvar</button>
+            <p id="mensagem" class="mensagem-sucesso"></p>
+            <p id="erro" class="mensagem-erro"></p>
+        </section>
+
+        <section class="image-area">
+            <div class="image-box">
+                <span class="img-icon">🖼️</span>
+            </div>
+
+            <button class="btn">Alterar imagem</button>
+        </section>
+
+    </main>
+
+    <script>
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const telefone = document.getElementById("telefone");
+        const senha = document.getElementById("senha");
+        const toggleSenha = document.getElementById("toggleSenha");
+        const btnSalvar = document.getElementById("salvarBtn");
+        const mensagem = document.getElementById("mensagem");
+        const erroMsg = document.getElementById("erro");
+
+        function erro(msg) {
+            erroMsg.textContent = msg;
+            erroMsg.style.color = "#d60000";
+            setTimeout(() => erroMsg.textContent = "", 4000);
+        }
+
+        telefone.addEventListener("input", (e) => {
+            let v = e.target.value.replace(/\D/g, "");
+            if (v.length > 11) v = v.slice(0, 11);
+
+            if (v.length >= 7) {
+                e.target.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+            } else if (v.length >= 3) {
+                e.target.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+            } else if (v.length >= 1) {
+                e.target.value = `(${v}`;
+            }
+        });
+
+        toggleSenha.addEventListener("click", () => {
+            senha.type = senha.type === "password" ? "text" : "password";
+        });
+
+        btnSalvar.addEventListener("click", () => {
+
+            const regexUsuario = /^[A-Za-z]+$/;
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+
+            if (!regexUsuario.test(username.value)) {
+                erro("Username deve conter apenas letras.");
+                return;
+            }
+
+            if (!regexEmail.test(email.value)) {
+                erro("Digite um email válido.");
+                return;
+            }
+
+            if (!regexTelefone.test(telefone.value)) {
+                erro("Digite um número de celular válido no formato (99) 99999-9999.");
+                return;
+            }
+
+            if (senha.value.length < 4) {
+                erro("A senha deve ter pelo menos 4 caracteres.");
+                return;
+            }
+
+            const dados = {
+                username: username.value,
+                email: email.value,
+                telefone: telefone.value,
+                senha: senha.value
+            };
+
+            localStorage.setItem("dadosMenttis", JSON.stringify(dados));
+
+            mensagem.textContent = "Informações salvas no Menttis!";
+            mensagem.style.color = "green";
+
+            setTimeout(() => mensagem.textContent = "", 3000);
+        });
+
+        window.onload = () => {
+            const dados = JSON.parse(localStorage.getItem("dadosMenttis"));
+            if (dados) {
+                username.value = dados.username;
+                email.value = dados.email;
+                telefone.value = dados.telefone;
+                senha.value = dados.senha;
+            }
+        };
+    </script>
+
+</body>
+</html>
