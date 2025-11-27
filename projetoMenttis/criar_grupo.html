@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menttis</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <!--By gabbi-fef and M4luLima-->
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="icons">
+            <div class="menu-icon" id="menuBtn">☰</div>
+            <img src="img/sino.png" alt="sino" class="noti">
+            <img src="img/logo2.png" alt="menttis" class="imglogo">
+            <div class="logo">Menttis</div>
+        </div>
+        <div class="caixa-pesquisa">
+            <img src="img/lupa.png" class="icone-lupa" alt="lupa">
+            <input type="text" placeholder="Pesquisar">
+        </div>
+    </header>
+
+    <!-- Menu lateral -->
+    <nav class="menulateral" id="menulateral">
+        <div class="topo-menu">
+            <img src="img/logo2.png" class="logomen">
+            <h2 class="nomemenu">Menttis</h2>
+        </div>
+        <ul>
+            <li><img src="img/juntar.png" class="icones"><a href="#">Juntar ao grupo</a></li>
+            <li><img src="img/criar.png" class="icones"><a href="#">Criar grupo</a></li>
+            <li><img src="img/config.png" class="icones"><a href="menuLateral_config.html">Configurações</a></li>
+            <li><img src="img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html">Ajuda & feedback</a></li>
+            <li><img src="img/casa.png" class="icones"><a href="#">Início</a></li>
+        </ul>
+        <button class="logout"><img src="img/sair.png" class="icones"><a href="pagina_login_pc.html"> Sair</a></button>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="container" id="mainContent">
+        <h1>Crie seu Grupo!</h1>
+        
+    </main>
+
+
+    <!-- JavaScript para abrir/fechar o menu -->
+    <script>
+        const menu = document.getElementById('menulateral');
+        const btn = document.getElementById('menuBtn');
+        const main = document.getElementById('mainContent');
+        const menuWidth = 360; 
+
+        let aberto = false;
+
+        btn.addEventListener('click', () => {
+            if (!aberto) {
+                menu.style.left = '0px';
+                main.style.marginLeft = menuWidth + 'px';
+                aberto = true;
+            } else {
+                menu.style.left = '-' + menuWidth + 'px';
+                main.style.marginLeft = '0px';
+                aberto = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
