@@ -9,9 +9,9 @@ const confirm_senha = document.getElementById("cpassoword");
 
 
 function registrarLogin() {
-    const emailRegistrado = (email.innerHTML == email_criado.innerHTML);
+    const emailRegistrado = (email.value == email_criado.value);
     if (senha_criada == confirm_senha) {
-        const senhaRegistrada = (senha.innerHTML == senha_criada.innerHTML);
+        const senhaRegistrada = (senha.value == senha_criada.value);
     };
     const nomeRegistrado = nome;
     const cellRegistrado = cell;
