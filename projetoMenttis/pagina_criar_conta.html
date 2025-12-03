@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
     <link rel="stylesheet" href="estilo_criar_conta.css">
+    <script src="login.js"></script>
 </head>
 </head>
 <body>
@@ -31,12 +32,12 @@
                 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Digite seu Email:">
+                    <input type="email" id="email-criado" placeholder="Digite seu Email:">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" placeholder="Digite sua Senha:">
+                    <input type="password" id="new-passord" placeholder="Digite sua Senha:">
                 </div>
 
                 <div class="form-group">
@@ -44,7 +45,7 @@
                     <input type="cpassword" id="cpassword" placeholder="Confirme sua senha:">
                 </div>
                 
-                <button type="submit" class="login-button"><a href="menu.html">Entrar</a></button>
+                <button type="submit" class="login-button" onclick="registrarLogin()"><a href="menu.html">Entrar</a></button>
             </form>
             
             <div class="footer">
