@@ -1,20 +1,27 @@
-const email = document.getElementById("email");
-const senha = document.getElementById("password");
-//
 const nome = document.getElementById("nome");
 const cell = document.getElementById("celular");
 const senha_criada = document.getElementById("new-password");
 const email_criado = document.getElementById("email-criado");
 const confirm_senha = document.getElementById("cpassoword");
 
+const email = email_criado;
+const senha = senha_criada;
+
 
 function registrarLogin() {
-    const emailRegistrado = (email.value == email_criado.value);
-    if (senha_criada == confirm_senha) {
-        const senhaRegistrada = (senha.value == senha_criada.value);
-    };
-    const nomeRegistrado = nome;
-    const cellRegistrado = cell;
-
+    if (!email_criado.value) {
+        alert("ERROR[esse email não existe]")
+        return;
+    }
+    const emailRegistrado = email_criado.value; 
+    if (!senha_criada.value || !confirm_senha.value) {
+        alert("ERROR[senha faltante]")
+        return;
+    }
+    if (senha_criada !== confirm_senha) {
+        alert("ERROR[senha errada]")
+        return;
+    }
+    const senhaRegistrada = senha_criada.value;
     window.alert("Redirecionando");
 };
