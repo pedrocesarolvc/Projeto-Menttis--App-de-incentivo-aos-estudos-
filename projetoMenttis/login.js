@@ -1,5 +1,5 @@
 const email = document.getElementById("email");
-const senha = decument.getElementById("password");
+const senha = document.getElementById("password");
 //
 const nome = document.getElementById("nome");
 const cell = document.getElementById("celular");
