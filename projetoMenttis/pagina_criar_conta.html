@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
     <link rel="stylesheet" href="estilo_criar_conta.css">
-    <script src="teste.js"></script>
 </head>
 </head>
 <body>
@@ -19,7 +18,7 @@
         <div class="right-section">
             <h2 class="login-title">Criar Conta</h2>
             
-            <form>
+            <form id="register-form">
                 <div class="form-group">
                     <label for="nome">Nome e Sobrenome</label>
                     <input type="text" id="nome" placeholder="Digite seu Nome:">
@@ -27,7 +26,7 @@
 
                 <div class="form-group">
                     <label for="celular">Celular</label>
-                    <input type="celular" id="celular" placeholder="Digite seu número de celular:">
+                    <input type="tel" id="celular" placeholder="Digite seu número de celular:">
                 </div>
                 
                 <div class="form-group">
@@ -37,7 +36,7 @@
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="new-passord" placeholder="Digite sua Senha:">
+                    <input type="password" id="new-password" placeholder="Digite sua Senha:">
                 </div>
 
                 <div class="form-group">
@@ -53,5 +52,7 @@
             </div>
         </div>
     </div>
+    
+    <script src="teste.js"></script>
 </body>
 </html>

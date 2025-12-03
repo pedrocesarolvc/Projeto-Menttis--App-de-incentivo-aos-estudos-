@@ -5,9 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const email_criado = document.getElementById("email-criado");
     const confirm_senha = document.getElementById("cpassword");
     const registerBtn = document.getElementById("register-btn");
+    const registerForm = document.getElementById("register-form");
 
-    registerBtn.addEventListener('click', registrarLogin);
+    if (registerBtn) {
+        registerbtn.addEventListener('click', registrarLogin);
+    }
 
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            registrarLogin(e);
+        });
+    }
     function registrarLogin(event) {
         event.preventDefault();
         
