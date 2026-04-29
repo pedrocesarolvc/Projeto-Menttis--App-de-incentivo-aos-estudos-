@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
     <link rel="stylesheet" href="css/menu.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <!--By gabbi-fef and M4luLima-->
@@ -30,7 +31,7 @@
         </div>
         <ul>
             <li><img src="img/juntar.png" class="icones"><a href="#">Juntar ao grupo</a></li>
-            <li><img src="img/criar.png" class="icones"><a href="#">Criar grupo</a></li>
+            <li><img src="img/criar.png" class="icones"><a href="criar_grupo.html">Criar grupo</a></li>
             <li><img src="img/config.png" class="icones"><a href="menuLateral_config.html">Configurações</a></li>
             <li><img src="img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html">Ajuda & feedback</a></li>
             <li><img src="img/casa.png" class="icones"><a href="#">Início</a></li>
@@ -40,8 +41,31 @@
 
     <!-- Conteúdo principal -->
     <main class="container" id="mainContent">
-        <h1>Junte-se à algum grupo!</h1>
+        <h1>Junte-se a algum grupo!</h1>
         <p>Você ainda não possui grupos. Monte sua equipe, ganhe pontos e suba de nível nos estudos!</p>
+        
+        <section class="groups-section">
+            <button class="arrow-btn left-arrow"><i class='bx bx-chevron-left'></i></button>
+            <div class="group-list">
+                <div class="group-card">
+                    <div class="card-image"><i class='bx bx-image-alt'></i></div>
+                    <p class="card-name">Grupo Matemática</p>
+                </div>
+                <div class="group-card">
+                    <div class="card-image"><i class='bx bx-image-alt'></i></div>
+                    <p class="card-name">Grupo História</p>
+                </div>
+                <div class="group-card">
+                    <div class="card-image"><i class='bx bx-image-alt'></i></div>
+                    <p class="card-name">Grupo Biologia</p>
+                </div>
+                <div class="group-card">
+                    <div class="card-image"><i class='bx bx-image-alt'></i></div>
+                    <p class="card-name">Grupo Inglês</p>
+                </div>
+            </div>
+            <button class="arrow-btn right-arrow"><i class='bx bx-chevron-right'></i></button>
+        </section>
     </main>
 
     <!-- JavaScript para abrir/fechar o menu -->
