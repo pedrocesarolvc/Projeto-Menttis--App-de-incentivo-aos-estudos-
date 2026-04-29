@@ -1,92 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const nome = document.getElementById("nome");
-    const cell = document.getElementById("celular");
-    const senha_criada = document.getElementById("new-password");
-    const email_criado = document.getElementById("email-criado");
-    const confirm_senha = document.getElementById("cpassword");
-    const registerBtn = document.getElementById("register-btn");
-    const registerForm = document.getElementById("register-form");
-
-    if (registerBtn) {
-        registerbtn.addEventListener('click', registrarLogin);
-    }
-
-    if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            registrarLogin(e);
-        });
-    }
-    function registrarLogin(event) {
-        event.preventDefault();
-        
-        if (!nome.value.trim()) {
-            alert("ERROR[campo vazio: Nome]");
-            nome.focus();
-            return;
-        }
-        
-        if (!cell.value.trim()) {
-            alert("ERROR[campo vazio: Celular]");
-            cell.focus();
-            return;
-        }
-        
-        if (!email_criado.value.trim()) {
-            alert("ERROR[campo vazio: Email]");
-            email_criado.focus();
-            return;
+const formLogin = {
+    // Transformamos as variáveis globais em um dicionário (objeto) usando getters
+    // Isso garante que os elementos sejam buscados no momento exato em que são necessários,
+    // evitando erros caso o DOM ainda não esteja 100% carregado.
+    get email() { return document.getElementById("email"); },
+    get senha() { return document.getElementById("password"); },
+    
+    // Função de segurança agrupada dentro do objeto para validar os dados
+    validar: function() {
+        if (!this.email || !this.email.value.trim()) {
+            alert("ERRO: O campo Email é obrigatório e não pode estar vazio.");
+            if (this.email) this.email.focus();
+            return false;
         }
         
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email_criado.value)) {
-            alert("ERROR[email inválido]");
-            email_criado.focus();
-            return;
+        if (!emailRegex.test(this.email.value)) {
+            alert("ERRO: Formato de Email inválido. Verifique o dado inserido.");
+            if (this.email) this.email.focus();
+            return false;
         }
         
-        if (!senha_criada.value) {
-            alert("ERROR[senha faltante]");
-            senha_criada.focus();
-            return;
+        if (!this.senha || !this.senha.value) {
+            alert("ERRO: O campo Senha é obrigatório e não pode estar vazio.");
+            if (this.senha) this.senha.focus();
+            return false;
         }
         
-        if (!confirm_senha.value) {
-            alert("ERROR[confirmação de senha faltante]");
-            confirm_senha.focus();
-            return;
-        }
-        
-        if (senha_criada.value !== confirm_senha.value) {
-            alert("ERROR[senhas não coincidem]");
-            senha_criada.focus();
-            return;
-        }
-        
-        if (senha_criada.value.length < 6) {
-            alert("ERROR[senha muito curta, mínimo 6 caracteres]");
-            senha_criada.focus();
-            return;
-        }
-        
-        const userData = {
-            nome: nome.value,
-            celular: cell.value,
-            email: email_criado.value,
-            senha: senha_criada.value
-        };
-        
-        console.log("Dados do usuário:", userData);
-        
-        alert("Redirecionando para o menu...");
-        
-        setTimeout(() => {
-            window.location.href = "menu.html";
-        }, 100);
+        return true; // Passou por todas as validações de segurança
     }
+};
 
-    document.getElementById('register-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        registrarLogin(e);
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona o botão de login (funciona tanto para a classe do PC quanto do celular)
+    const btnLogin = document.querySelector(".login-button, .botao");
+    
+    if (btnLogin) {
+        // Intercepta o clique para rodar nossa função de segurança
+        btnLogin.addEventListener('click', function(e) {
+            e.preventDefault(); // Impede que a página recarregue incorretamente
+            
+            if (formLogin.validar()) {
+                console.log("Login seguro efetuado para o usuário:", formLogin.email.value);
+                alert("Login efetuado com sucesso! Redirecionando para o menu principal...");
+                
+                // Redirecionamento seguro via JS, eliminando a tag <a> dentro do botão
+                setTimeout(() => {
+                    window.location.href = "../menu.html";
+                }, 500);
+            }
+        });
+    }
 });
