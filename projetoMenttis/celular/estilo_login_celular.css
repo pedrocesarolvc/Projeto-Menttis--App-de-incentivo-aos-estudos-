@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 350px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.parte-logo { 
+    background-color: #86AFF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.logo {
+    width: 260px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pre-forms {
+    background-color: #fffaf5;
+    padding: 30px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -20px;
+}
+
+.pre-forms h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #3D3333;
+}
+
+.grupo-formulario {
+    margin-bottom: 15px;
+}
+
+.grupo-formulario label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #3D3333;
+}
+
+.grupo-formulario input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.esqueceu {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.esqueceu a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #86AFF6;
+}
+
+.botao {
+    width: 100%;
+    padding: 12px;
+    background-color: #2f52a2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.botao:hover {
+    background-color: #23417c;
+}
+
+.cadastre-se {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color:#3D3333
+}
+
+.cadastre-se a {
+    color:#2f52a2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.marca-de-agua {
+   text-align: center;
+   padding: 2px;
+   color: rgb(0, 25, 124);
+}
