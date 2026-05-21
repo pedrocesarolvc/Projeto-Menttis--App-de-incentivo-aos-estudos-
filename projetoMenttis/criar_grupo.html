@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
-    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/criar_grupo.css">
 </head>
 <body>
-    <!--By gabbi-fef and M4luLima-->
-    <!-- Navbar -->
     <header class="navbar">
         <div class="icons">
             <div class="menu-icon" id="menuBtn">☰</div>
@@ -40,40 +38,84 @@
 
     <!-- Conteúdo principal -->
     <main class="container" id="mainContent">
-        <h1>Crie seu Grupo!</h1>
-        <br>
-        <p>Escolha um nome para o seu grupo:</p>
-        <input type="text" placeholder="Nome do Grupo">
-        <br>
-        <br>
-        <p>Adicione uma descrição:</p>
-        <input type="text" placeholder="Descrição do Grupo">
-        <br>
-        <br>
-        <button type="submit">Criar Grupo</button>
+        <div class="create-card">
+            <h1>Crie seu Grupo!</h1>
+            <form id="formCriarGrupo" action="#" method="post">
+                <div class="form-group">
+                    <label>📌 Escolha um nome para o grupo.</label>
+                    <input type="text" class="input-moderno" placeholder="Ex: Matemática Enem, Coders, Estudos Livres" name="nomeGrupo" required>
+                </div>
+
+                <div class="form-group">
+                    <label>✏️ Crie uma descrição.</label>
+                    <textarea class="textarea-moderno" placeholder="Descreva o foco do grupo, objetivos ou regras (opcional mas recomendado)" name="descricao" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-criar">Criar Grupo</button>
+                <div class="info-text">
+                    🌟 Seu grupo ficará visível para outros estudantes
+                </div>
+            </form>
+        </div>
     </main>
 
 
     <!-- JavaScript para abrir/fechar o menu -->
     <script>
-        const menu = document.getElementById('menulateral');
-        const btn = document.getElementById('menuBtn');
-        const main = document.getElementById('mainContent');
-        const menuWidth = 360; 
+        (function() {
+            const menu = document.getElementById('menulateral');
+            const menuBtn = document.getElementById('menuBtn');
+            const mainContent = document.getElementById('mainContent');
+            const MENU_WIDTH = 300;
+            
+            let isMenuOpen = false;
 
-        let aberto = false;
+            if (menu) menu.style.left = '-300px';
+            if (mainContent) mainContent.style.marginLeft = '0px';
 
-        btn.addEventListener('click', () => {
-            if (!aberto) {
-                menu.style.left = '0px';
-                main.style.marginLeft = menuWidth + 'px';
-                aberto = true;
-            } else {
-                menu.style.left = '-' + menuWidth + 'px';
-                main.style.marginLeft = '0px';
-                aberto = false;
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!isMenuOpen) {
+                        menu.style.left = '0px';
+                        mainContent.style.marginLeft = MENU_WIDTH + 'px';
+                        isMenuOpen = true;
+                    } else {
+                        menu.style.left = '-' + MENU_WIDTH + 'px';
+                        mainContent.style.marginLeft = '0px';
+                        isMenuOpen = false;
+                    }
+                });
             }
-        });
+
+            if (mainContent) {
+                mainContent.addEventListener('click', () => {
+                    if (isMenuOpen) {
+                        menu.style.left = '-' + MENU_WIDTH + 'px';
+                        mainContent.style.marginLeft = '0px';
+                        isMenuOpen = false;
+                    }
+                });
+            }
+
+            if (menu) {
+                menu.addEventListener('click', (e) => e.stopPropagation());
+            }
+        })();
+
+                const form = document.getElementById('formCriarGrupo');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nomeInput = document.querySelector('input[name="nomeGrupo"]');
+                const nomeGrupo = nomeInput ? nomeInput.value.trim() : '';
+                if (nomeGrupo === '') {
+                    alert('Por favor, escolha um nome para o grupo.');
+                    return;
+                }
+                alert(`Grupo "${nomeGrupo}" criado com sucesso!`);
+            });
+        }
     </script>
 
 </body>
