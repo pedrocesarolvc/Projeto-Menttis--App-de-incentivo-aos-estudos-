@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
-    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/entrar_grupo.css">
 </head>
 <body>
     <!--By gabbi-fef and M4luLima-->
@@ -40,38 +40,80 @@
 
     <!-- Conteúdo principal -->
     <main class="container" id="mainContent">
-        <h1>Entre em um Grupo e começe seus estudos!</h1>
-        <p>Insira um link de convite para se juntar a um grupo existente.</p>
-        <br>
-        <form>
-            <input type="text" placeholder="Link de Convite">
-            <br>
-            <br>
-            <button type="submit">Entrar</button>
-        </form>
+        <div class="join-card">
+            <!-- título e descrição exatamente como no modelo -->
+            <h1>Junte-se a um grupo</h1>
+            <p>Insira um link de convite.</p>
+
+            <form class="join-form" action="#" method="post">
+                <!-- Caixa de input arredondada com fonte suave -->
+                <input type="text" class="input-link" placeholder="Link de convite" aria-label="Link de convite do grupo">
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+            <div class="link-helper">
+                ✨ Use o link compartilhado pelo administrador
+            </div>
+        </div>
     </main>
 
 
     <!-- JavaScript para abrir/fechar o menu -->
     <script>
-        const menu = document.getElementById('menulateral');
-        const btn = document.getElementById('menuBtn');
-        const main = document.getElementById('mainContent');
-        const menuWidth = 360; 
+        (function() {
+            const menu = document.getElementById('menulateral');
+            const menuBtn = document.getElementById('menuBtn');
+            const main = document.getElementById('mainContent');
+            const MENU_WIDTH = 300;       // largura real do menu (CSS)
+            let isMenuOpen = false;
 
-        let aberto = false;
-
-        btn.addEventListener('click', () => {
-            if (!aberto) {
-                menu.style.left = '0px';
-                main.style.marginLeft = menuWidth + 'px';
-                aberto = true;
-            } else {
-                menu.style.left = '-' + menuWidth + 'px';
-                main.style.marginLeft = '0px';
-                aberto = false;
+            // garantir estado inicial correto (menu fechado visualmente)
+            if (menu) {
+                menu.style.left = '-300px';
             }
-        });
+            if (main) {
+                main.style.marginLeft = '0px';
+            }
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!isMenuOpen) {
+                        // abre menu
+                        menu.style.left = '0px';
+                        main.style.marginLeft = MENU_WIDTH + 'px';
+                        isMenuOpen = true;
+                    } else {
+                        // fecha menu
+                        menu.style.left = '-' + MENU_WIDTH + 'px';
+                        main.style.marginLeft = '0px';
+                        isMenuOpen = false;
+                    }
+                });
+            }
+
+            if (main) {
+                main.addEventListener('click', (e) => {
+                    if (isMenuOpen) {
+                        menu.style.left = '-' + MENU_WIDTH + 'px';
+                        main.style.marginLeft = '0px';
+                        isMenuOpen = false;
+                    }
+                });
+            }
+
+            // Evitar que cliques dentro do menu fechem o menu
+            if (menu) {
+                menu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768 && isMenuOpen) {
+                }
+            });
+        })();
     </script>
 
 </body>

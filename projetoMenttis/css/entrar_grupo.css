@@ -1,0 +1,385 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: #f2f5fc;
+            color: #1e293b;
+            overflow-x: hidden;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* ----- Navbar (topo) ----- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            backdrop-filter: blur(0px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 70px;
+            z-index: 1000;
+            border-bottom: 1px solid #eef2f8;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-icon {
+            font-size: 26px;
+            cursor: pointer;
+            color: #2c3e66;
+            transition: 0.2s;
+            user-select: none;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .menu-icon:hover {
+            color: #1e4f8a;
+            transform: scale(1.02);
+        }
+
+        .noti {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .noti:hover {
+            opacity: 1;
+        }
+
+        .imglogo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .logo {
+            font-size: 1.55rem;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1e5f9e, #2b4f8c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .caixa-pesquisa {
+            display: flex;
+            align-items: center;
+            background: #f3f6fc;
+            border-radius: 48px;
+            padding: 8px 18px;
+            gap: 12px;
+            width: 280px;
+            transition: all 0.2s;
+            border: 1px solid #e2edf7;
+        }
+
+        .caixa-pesquisa:focus-within {
+            background: #ffffff;
+            border-color: #89b9e7;
+            box-shadow: 0 0 0 3px rgba(30, 95, 158, 0.1);
+        }
+
+        .icone-lupa {
+            width: 18px;
+            height: 18px;
+            opacity: 0.6;
+        }
+
+        .caixa-pesquisa input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: #1e2f44;
+        }
+
+        .caixa-pesquisa input::placeholder {
+            color: #8ea3bb;
+            font-weight: 400;
+            letter-spacing: -0.2px;
+        }
+
+        /* ----- MENU LATERAL (suave e moderno) ----- */
+        .menulateral {
+            position: fixed;
+            top: 0;
+            left: -360px;
+            width: 300px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.08);
+            z-index: 1100;
+            transition: left 0.32s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 28px 0 28px 0;
+            border-right: 1px solid #edf2f7;
+        }
+
+        .topo-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px 20px 24px;
+            border-bottom: 1px solid #ecf3fa;
+            margin-bottom: 24px;
+        }
+
+        .logomen {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nomemenu {
+            font-size: 1.65rem;
+            font-weight: 600;
+            background: linear-gradient(125deg, #1c5a99, #2b5797);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .menulateral ul {
+            flex: 1;
+            list-style: none;
+            padding: 0 16px;
+        }
+
+        .menulateral ul li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            margin: 6px 0;
+            border-radius: 16px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .menulateral ul li:hover {
+            background: #f0f6fe;
+        }
+
+        .icones {
+            width: 22px;
+            height: 22px;
+            opacity: 0.75;
+        }
+
+        .menulateral ul li a {
+            text-decoration: none;
+            color: #1e3a5f;
+            font-weight: 500;
+            font-size: 1rem;
+            flex: 1;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .logout {
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 20px;
+            margin: 0 20px 24px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: calc(100% - 40px);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .logout:hover {
+            background: #fee9e6;
+        }
+
+        .logout a {
+            text-decoration: none;
+            color: #bc4e2c;
+            font-weight: 500;
+        }
+
+        /* ----- CONTEÚDO PRINCIPAL (card do grupo estilo modelo) ----- */
+        .container {
+            transition: margin-left 0.32s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            margin-left: 0;
+            padding: 100px 24px 60px 24px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card inspirado no modelo "Junte-se a um grupo" */
+        .join-card {
+            background: #ffffff;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 36px 48px 36px;
+            border-radius: 36px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid #eef2fa;
+        }
+
+        .join-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(115deg, #1f639e, #2c5282);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .join-card p {
+            font-size: 1rem;
+            color: #4a627a;
+            margin-bottom: 30px;
+            font-weight: 400;
+            line-height: 1.45;
+        }
+
+        /* Formulário do grupo */
+        .join-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Caixa de input arredondada com fonte suave */
+        .input-link {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 1rem;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-weight: 450;
+            color: #0f2b3f;
+            background-color: #fbfdff;
+            border: 1.5px solid #e2e9f2;
+            border-radius: 60px;
+            outline: none;
+            transition: 0.2s;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+
+        .input-link:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+            background: #ffffff;
+        }
+
+        .input-link::placeholder {
+            color: #9bb1c9;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        /* Botão Entrar AZUL (destaque) */
+        .btn-entrar {
+            background: #1e6ef0;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(30, 110, 240, 0.2);
+            letter-spacing: 0.2px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .btn-entrar:hover {
+            background: #0f5ad8;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -6px rgba(30, 110, 240, 0.35);
+        }
+
+        .btn-entrar:active {
+            transform: translateY(1px);
+            background: #0a4bb3;
+        }
+
+        /* rodapézinho visual opcional */
+        .link-helper {
+            margin-top: 28px;
+            font-size: 0.8rem;
+            color: #7f93af;
+        }
+
+        /* responsividade e ajustes finos */
+        @media (max-width: 650px) {
+            .navbar {
+                padding: 0 18px;
+            }
+            .caixa-pesquisa {
+                width: 200px;
+                padding: 6px 14px;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .join-card {
+                padding: 32px 22px 40px;
+            }
+            .join-card h1 {
+                font-size: 1.7rem;
+            }
+            .container {
+                padding: 90px 18px 40px;
+            }
+            .menulateral {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .join-card {
+                padding: 28px 20px 36px;
+            }
+            .input-link {
+                padding: 14px 20px;
+            }
+        }
+
+        /* suavizar rolagem e fontes */
+        html {
+            scroll-behavior: smooth;
+        }
+        button, input {
+            font-family: inherit;
+        }
