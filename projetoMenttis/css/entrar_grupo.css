@@ -5,9 +5,9 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-            background: #f2f5fc;
-            color: #1e293b;
+            font-family: 'Arial', sans-serif;
+            background: #faf4e8;
+            color: #333;
             overflow-x: hidden;
             font-weight: 400;
             line-height: 1.4;
@@ -72,12 +72,8 @@
 
         .logo {
             font-size: 1.55rem;
-            font-weight: 650;
-            letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #1e5f9e, #2b4f8c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-weight: bold;
+            color: #2b4d9c;
         }
 
         .caixa-pesquisa {
@@ -128,15 +124,14 @@
             left: -360px;
             width: 300px;
             height: 100vh;
-            background: #ffffff;
-            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.08);
+            background: #2b4d9c;
+            color: white;
             z-index: 1100;
             transition: left 0.32s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 28px 0 28px 0;
-            border-right: 1px solid #edf2f7;
         }
 
         .topo-menu {
@@ -156,11 +151,7 @@
         .nomemenu {
             font-size: 1.65rem;
             font-weight: 600;
-            background: linear-gradient(125deg, #1c5a99, #2b5797);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
+            color: white;
         }
 
         .menulateral ul {
@@ -181,22 +172,30 @@
         }
 
         .menulateral ul li:hover {
-            background: #f0f6fe;
+            background: #2f52a2;
+        }
+
+        .menulateral ul li:hover a {
+            color: #F5C22C;
+        }
+
+        .menulateral ul li:hover .icones {
+            filter: invert(70%) sepia(85%) saturate(500%) hue-rotate(3deg) brightness(100%) contrast(100%);
         }
 
         .icones {
             width: 22px;
             height: 22px;
-            opacity: 0.75;
+            filter: invert(1);
         }
 
         .menulateral ul li a {
             text-decoration: none;
-            color: #1e3a5f;
+            color: white;
             font-weight: 500;
             font-size: 1rem;
             flex: 1;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         .logout {
@@ -252,13 +251,9 @@
 
         .join-card h1 {
             font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(115deg, #1f639e, #2c5282);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-weight: bold;
+            color: #2b4d9c;
             margin-bottom: 12px;
-            letter-spacing: -0.5px;
         }
 
         .join-card p {
@@ -307,31 +302,20 @@
 
         /* Botão Entrar AZUL (destaque) */
         .btn-entrar {
-            background: #1e6ef0;
-            color: white;
+            background: #2f52a2;
+            color: #F5C22C;
             border: none;
             padding: 14px 20px;
             font-size: 1.05rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border-radius: 60px;
+            font-weight: bold;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 8px rgba(30, 110, 240, 0.2);
-            letter-spacing: 0.2px;
             width: 100%;
             margin-top: 8px;
         }
 
         .btn-entrar:hover {
-            background: #0f5ad8;
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px -6px rgba(30, 110, 240, 0.35);
-        }
-
-        .btn-entrar:active {
-            transform: translateY(1px);
-            background: #0a4bb3;
+            background: #23417c;
         }
 
         /* rodapézinho visual opcional */

@@ -31,7 +31,7 @@
             <li><img src="img/criar.png" class="icones"><a href="criar_grupo.html">Criar grupo</a></li>
             <li><img src="img/config.png" class="icones"><a href="menuLateral_config.html">Configurações</a></li>
             <li><img src="img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html">Ajuda & feedback</a></li>
-            <li><img src="img/casa.png" class="icones"><a href="#">Início</a></li>
+            <li><img src="img/casa.png" class="icones"><a href="menu.html">Início</a></li>
         </ul>
         <button class="logout"><img src="img/sair.png" class="icones"><a href="pc/pagina_login_pc.html"> Sair</a></button>
     </nav>
@@ -88,19 +88,13 @@
                 });
             }
 
-            if (mainContent) {
-                mainContent.addEventListener('click', () => {
-                    if (isMenuOpen) {
-                        menu.style.left = '-' + MENU_WIDTH + 'px';
-                        mainContent.style.marginLeft = '0px';
-                        isMenuOpen = false;
-                    }
-                });
-            }
-
-            if (menu) {
-                menu.addEventListener('click', (e) => e.stopPropagation());
-            }
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && !menu.contains(e.target) && (!menuBtn || !menuBtn.contains(e.target))) {
+                    menu.style.left = '-' + MENU_WIDTH + 'px';
+                    if (mainContent) mainContent.style.marginLeft = '0px';
+                    isMenuOpen = false;
+                }
+            });
         })();
 
                 const form = document.getElementById('formCriarGrupo');

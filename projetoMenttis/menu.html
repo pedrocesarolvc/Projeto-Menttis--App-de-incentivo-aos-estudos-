@@ -77,12 +77,20 @@
 
         let aberto = false;
 
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
             if (!aberto) {
                 menu.style.left = '0px';
                 main.style.marginLeft = menuWidth + 'px';
                 aberto = true;
             } else {
+                menu.style.left = '-' + menuWidth + 'px';
+                main.style.marginLeft = '0px';
+                aberto = false;
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (aberto && !menu.contains(e.target) && !btn.contains(e.target)) {
                 menu.style.left = '-' + menuWidth + 'px';
                 main.style.marginLeft = '0px';
                 aberto = false;

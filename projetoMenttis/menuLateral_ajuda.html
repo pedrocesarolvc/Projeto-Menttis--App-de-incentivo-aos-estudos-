@@ -78,5 +78,16 @@
 
     </main>
 
+    <script>
+        document.addEventListener('click', function(event) {
+            const menuLateral = document.querySelector('.menulateral');
+            const menuIcon = document.querySelector('.menu-icon');
+            const checkbox = document.getElementById('menulat');
+
+            if (checkbox && checkbox.checked && menuLateral && !menuLateral.contains(event.target) && !menuIcon.contains(event.target) && event.target !== checkbox) {
+                checkbox.checked = false;
+            }
+        });
+    </script>
 </body>
 </html>
