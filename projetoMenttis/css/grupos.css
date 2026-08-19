@@ -1,0 +1,407 @@
+/* Tudo relacionado a grupos: o carrossel do painel principal, a grade de
+   "Meus grupos", a tela de detalhe/raid e os formulários de criar/entrar.
+   Depende de tokens.css (cores, fontes) e layout.css (casca da página). */
+
+/* ---- título de seção + botão "ver todos" ---- */
+
+.section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.section-head h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-head a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.section-head a:hover {
+    text-decoration: underline;
+}
+
+/* ---- carrossel (painel principal) ---- */
+
+.groups-carousel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 4px 2px 12px;
+    scrollbar-width: thin;
+}
+
+.arrow-btn {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+    color: var(--primary);
+    cursor: pointer;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+}
+
+.arrow-btn:hover {
+    background: var(--primary-tint);
+}
+
+.group-card-mini {
+    flex: none;
+    width: 190px;
+    padding: 18px;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.group-card-mini:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.group-card-mini .card-subject {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+}
+
+.group-card-mini .card-name {
+    font-size: 15.5px;
+    font-weight: 600;
+}
+
+/* ---- grade (meus_grupos.html) ---- */
+
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.group-card {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .15s, box-shadow .15s;
+}
+
+.group-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.group-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.group-card .card-subject {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.group-card .card-name {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.group-card .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-card .member-count {
+    font-size: 13px;
+    color: var(--ink-faint);
+}
+
+.group-card-add {
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius-md);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 22px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    min-height: 150px;
+    transition: .2s;
+}
+
+.group-card-add:hover {
+    background: var(--primary-tint);
+    border-color: var(--primary);
+}
+
+.group-card-add .bx {
+    font-size: 26px;
+}
+
+/* ---- tela de detalhe do grupo (raid) ---- */
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.detail-header .card-subject {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.detail-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 860px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.challenge-card {
+    padding: 26px;
+}
+
+.challenge-card h2 {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.challenge-card .challenge-titulo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 6px 0 18px;
+}
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--primary-tint);
+    overflow: hidden;
+}
+
+.progress-bar i {
+    display: block;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 999px;
+}
+
+.progress-label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    white-space: nowrap;
+}
+
+.roster-card {
+    padding: 22px;
+}
+
+.roster-card h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.roster-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.roster-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.roster-list .avatar {
+    margin-left: 0;
+}
+
+.roster-name {
+    flex: 1;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.roster-tag {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 3px 9px;
+    border-radius: 999px;
+}
+
+.invite-card {
+    padding: 22px;
+    margin-top: 20px;
+}
+
+.invite-card h2 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.invite-row {
+    display: flex;
+    gap: 10px;
+}
+
+.invite-row input {
+    flex: 1;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--primary-tint);
+    color: var(--ink-soft);
+    font-size: 13.5px;
+}
+
+/* ---- formulários (criar / entrar em grupo) ---- */
+
+.form-shell {
+    min-height: calc(100vh - var(--topbar-height) - 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-card {
+    max-width: 540px;
+    width: 100%;
+    padding: 42px 40px 48px;
+    text-align: center;
+}
+
+.form-card h1 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.form-card > p {
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+}
+
+.form-group {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: .95rem;
+}
+
+.input-moderno,
+.textarea-moderno,
+.input-link {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    color: var(--ink);
+    background-color: #fbfdff;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    outline: none;
+    transition: .2s;
+}
+
+.textarea-moderno {
+    border-radius: 20px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.input-moderno:focus,
+.textarea-moderno:focus,
+.input-link:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-tint);
+    background: #fff;
+}
+
+.form-card .btn {
+    width: 100%;
+    margin-top: 26px;
+}
+
+.info-text {
+    font-size: .82rem;
+    color: var(--ink-faint);
+    margin-top: 16px;
+}

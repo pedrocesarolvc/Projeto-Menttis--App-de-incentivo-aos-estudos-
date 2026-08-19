@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus grupos - Menttis</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/grupos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body data-page="meus_grupos">
+    <div id="app-shell"></div>
+
+    <main class="page">
+        <section class="dashboard-header">
+            <h1>Meus grupos</h1>
+            <p>Veja em quais grupos você está, quem faz parte e se tem desafio rolando agora.</p>
+        </section>
+
+        <div class="groups-grid" id="grade-grupos"></div>
+    </main>
+
+    <script src="js/shell.js"></script>
+    <script src="js/mockData.js"></script>
+    <script>
+        const grade = document.getElementById('grade-grupos');
+
+        if (MENTTIS_GRUPOS.length === 0) {
+            grade.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1">
+                    <i class='bx bx-group'></i>
+                    <p>Você ainda não faz parte de nenhum grupo. Que tal criar um ou entrar com um link de convite?</p>
+                </div>
+            `;
+        } else {
+            MENTTIS_GRUPOS.forEach((grupo) => {
+                const a = document.createElement('a');
+                a.href = `grupo_detalhe.html?id=${grupo.id}`;
+                a.className = 'card group-card';
+                a.innerHTML = `
+                    <div class="group-card-top">
+                        <div>
+                            <div class="card-subject">${grupo.materia}</div>
+                            <div class="card-name">${grupo.nome}</div>
+                        </div>
+                        <span class="badge ${grupo.desafio.ativo ? 'badge-live' : 'badge-idle'}">${grupo.desafio.ativo ? '🔥 Ativo' : 'Parado'}</span>
+                    </div>
+                    <div class="avatar-stack">${grupo.membros.slice(0, 4).map((m) => `<span class="avatar" style="background:${m.cor}">${m.iniciais}</span>`).join('')}</div>
+                    <div class="card-footer">
+                        <span class="member-count">${grupo.membros.length} ${grupo.membros.length === 1 ? 'membro' : 'membros'}</span>
+                        <span class="member-count">Ver grupo →</span>
+                    </div>
+                `;
+                grade.appendChild(a);
+            });
+        }
+
+        const criarTile = document.createElement('a');
+        criarTile.href = 'criar_grupo.html';
+        criarTile.className = 'group-card-add';
+        criarTile.innerHTML = `<i class='bx bx-plus-circle'></i><span>Criar novo grupo</span>`;
+        grade.appendChild(criarTile);
+
+        const entrarTile = document.createElement('a');
+        entrarTile.href = 'entrar_grupo.html';
+        entrarTile.className = 'group-card-add';
+        entrarTile.innerHTML = `<i class='bx bx-link-alt'></i><span>Entrar com um link</span>`;
+        grade.appendChild(entrarTile);
+    </script>
+</body>
+</html>

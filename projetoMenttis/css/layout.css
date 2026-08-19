@@ -1,0 +1,264 @@
+/* Casca da aplicação: topbar + menu lateral. Única fonte de verdade —
+   antes cada página tinha sua própria cópia (levemente diferente) disso. */
+
+body.tem-shell {
+    padding-top: var(--topbar-height);
+}
+
+/* ---- topbar ---- */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topbar-height);
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+    z-index: 200;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: none;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.icon-btn:hover {
+    background: var(--primary-tint);
+}
+
+.icon-btn.bell img {
+    width: 22px;
+    height: 22px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-tint);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 9px 16px;
+    color: var(--ink-faint);
+    transition: border-color .2s, background .2s;
+}
+
+.search-box:focus-within {
+    background: var(--card);
+    border-color: var(--primary);
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    font-size: 14.5px;
+    color: var(--ink);
+}
+
+/* ---- sidebar ---- */
+
+.sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 24, 46, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 210;
+}
+
+body.sidebar-open .sidebar-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    background: var(--primary);
+    color: #fff;
+    z-index: 220;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    transform: translateX(-100%);
+    transition: transform .3s cubic-bezier(0.2, 0.9, 0.4, 1.05);
+}
+
+body.sidebar-open .sidebar {
+    transform: translateX(0);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px 20px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.sidebar-brand span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sidebar-nav {
+    list-style: none;
+    flex: 1;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
+    font-size: 15px;
+    transition: background .2s, color .2s;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-nav a.active {
+    background: #fff;
+    color: var(--primary);
+}
+
+.sidebar-nav a.active .bx,
+.sidebar-nav a.active .nav-icon {
+    filter: none;
+}
+
+.sidebar-nav .bx {
+    font-size: 20px;
+    width: 22px;
+    color: var(--accent);
+    flex: none;
+}
+
+.sidebar-nav a.active .bx {
+    color: var(--primary);
+}
+
+.nav-icon {
+    width: 21px;
+    height: 21px;
+    flex: none;
+}
+
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 20px 0;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: .2s;
+}
+
+.sidebar-logout img {
+    width: 19px;
+    height: 19px;
+}
+
+.sidebar-logout:hover {
+    background: var(--accent);
+    color: var(--primary-deep);
+    border-color: var(--accent);
+}
+
+/* ---- conteúdo da página ---- */
+
+.page {
+    padding: 32px 40px 64px;
+    transition: margin-left .3s cubic-bezier(0.2, 0.9, 0.4, 1.05);
+    min-height: calc(100vh - var(--topbar-height));
+}
+
+@media (min-width: 901px) {
+    body.sidebar-open .page {
+        margin-left: var(--sidebar-width);
+    }
+}
+
+@media (max-width: 720px) {
+    .search-box {
+        display: none;
+    }
+
+    .page {
+        padding: 24px 18px 48px;
+    }
+
+    .sidebar {
+        width: min(var(--sidebar-width), 82vw);
+    }
+}

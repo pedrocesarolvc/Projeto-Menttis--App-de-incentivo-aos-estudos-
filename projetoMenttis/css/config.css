@@ -1,0 +1,103 @@
+.settings-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.settings-form {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-form h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+
+.settings-form label {
+    font-size: 14px;
+    margin-top: 10px;
+    color: var(--ink-soft);
+}
+
+.settings-form input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    background: var(--card);
+}
+
+.settings-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.settings-form .btn {
+    width: 180px;
+    margin-top: 22px;
+}
+
+.image-area {
+    flex: none;
+    width: 260px;
+    text-align: center;
+}
+
+.image-box {
+    width: 220px;
+    height: 220px;
+    background: var(--primary);
+    border-radius: var(--radius-lg);
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-icon {
+    font-size: 60px;
+}
+
+.password-field {
+    position: relative;
+}
+
+.toggle-eye {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.mensagem-sucesso {
+    margin-top: 14px;
+    font-size: 14.5px;
+    color: var(--good);
+    font-weight: 600;
+}
+
+.mensagem-erro {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--danger);
+    font-weight: 600;
+}
+
+@media (max-width: 720px) {
+    .settings-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-area {
+        width: 100%;
+    }
+}

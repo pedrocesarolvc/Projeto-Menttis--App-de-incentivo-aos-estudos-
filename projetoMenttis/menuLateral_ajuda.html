@@ -3,91 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../inicial/img/logo2.png" type="image/x-icon">
     <title>Ajuda & Feedback - Menttis</title>
-    <link rel="stylesheet" href="css/menuLateral_ajuda.css">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/ajuda.css">
 </head>
-<body>
+<body data-page="ajuda">
+    <div id="app-shell"></div>
 
-    <input type="checkbox" id="menulat"> 
+    <main class="page">
+        <div class="ajuda-container">
+            <section class="faq">
+                <h1>Ajuda & Feedback</h1>
+                <h2>Perguntas frequentes:</h2>
 
-    <header class="navbar">
-        <label for="menulat" class="menu-icon">☰</label>
+                <div class="faq-item">
+                    <h3>Como o XP é calculado?</h3>
+                    <p>O XP é ganho respondendo perguntas certas, sozinho ou em grupo. Quanto mais consistente você é, mais XP acumula.</p>
+                </div>
 
-        <div class="logo">
-            <img src="../inicial/img/logo2.png" alt="Menttis Logo">
-            <span>Menttis</span>
+                <div class="faq-item">
+                    <h3>O que acontece quando eu ganho XP?</h3>
+                    <p>Cada vez que você ganha XP, seu nível sobe. Continue estudando para alcançar o topo e mostrar quem é o mestre dos estudos!</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Como funcionam os grupos?</h3>
+                    <p>Você pode criar um grupo com seus amigos ou entrar em um já existente. Dentro do grupo, todos encaram desafios juntos, como uma equipe.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Os assuntos precisam ser de escola?</h3>
+                    <p>Não! O Menttis funciona pra qualquer assunto — as perguntas são geradas na hora pra o tema que você escolher.</p>
+                </div>
+            </section>
+
+            <aside class="card feedback-box">
+                <h2>Tem alguma ideia ou sugestão para deixar o Menttis ainda mais divertido? Conta pra gente!</h2>
+                <textarea placeholder="Digite seu feedback aqui..."></textarea>
+                <button class="btn btn-primary">Enviar feedback</button>
+            </aside>
         </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Pesquisar">
-        </div>
-    </header>
-
-    <nav class="menulateral">
-        <div class="topo-menu">
-            <img src="../inicial/img/logo2.png" class="logomen">
-            <h2 class="nomemenu">Menttis</h2>
-        </div>
-        <ul>
-            <li><img src="../inicial/img/juntar.png" class="icones"><a href="entrar_grupo.html"> Juntar ao grupo </a></li>
-            <li><img src="../inicial/img/criar.png" class="icones"> <a href="criar_grupo.html">Criar grupo</a></li>
-            <li><img src="../inicial/img/config.png" class="icones"><a href="menuLateral_config.html"> Configurações</a></li>
-            <li><img src="../inicial/img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html"> Ajuda & feedback</a></li>
-            <li><img src="../inicial/img/casa.png" class="icones"><a href="menu.html"> Início</a></li>
-        </ul>
-        <button class="logout"><img src="../inicial/img/sair.png" class="icones"> Sair</button>
-    </nav>
-
-
-    <main class="container">
-
-        <section class="faq">
-            <h1>Ajuda & Feedback</h1>
-
-            <h2>Perguntas frequentes:</h2>
-
-            <div class="faq-item">
-                <h3>Como o XP é calculado?</h3>
-                <p>O XP é ganho com base no tempo que você passa estudando enquanto está com o cronômetro ativo. Quanto mais tempo de foco, mais XP você acumula.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>O que acontece quando eu ganho XP?</h3>
-                <p>Cada vez que você ganha XP, seu nível sobe e sua posição no ranking do grupo melhora. Continue estudando para alcançar o topo e mostrar quem é o mestre dos estudos!</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>Como funcionam os grupos?</h3>
-                <p>Você pode criar um grupo com seus amigos ou entrar em um já existente. Dentro do grupo, todos competem de forma saudável para ver quem estuda mais durante a semana ou o mês.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3>O site tem alguma forma de detectar se eu realmente estou estudando?</h3>
-                <p>A cada dez minutos, o site envia uma pergunta sobre o conteúdo que você está estudando. Caso não responda, o sistema pode considerar que você não está mais ativo e finalizar o cronômetro.</p>
-            </div>
-        </section>
-
-        <aside class="feedback-box">
-            <h2>Tem alguma ideia ou sugestão para deixar o site de estudos ainda mais divertido?<br>Conta para a gente!</h2>
-
-            <textarea placeholder="Digite seu feedback aqui..."></textarea>
-
-            <button class="btn">Enviar Feedback</button>
-        </aside>
-
     </main>
 
-    <script>
-        document.addEventListener('click', function(event) {
-            const menuLateral = document.querySelector('.menulateral');
-            const menuIcon = document.querySelector('.menu-icon');
-            const checkbox = document.getElementById('menulat');
-
-            if (checkbox && checkbox.checked && menuLateral && !menuLateral.contains(event.target) && !menuIcon.contains(event.target) && event.target !== checkbox) {
-                checkbox.checked = false;
-            }
-        });
-    </script>
+    <script src="js/shell.js"></script>
 </body>
 </html>

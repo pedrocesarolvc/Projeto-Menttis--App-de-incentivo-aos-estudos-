@@ -1,0 +1,174 @@
+/* Sistema de design do Menttis — cores, fontes e componentes de base
+   compartilhados por toda a aplicação. Qualquer página do app (não as de
+   login/cadastro, que têm o próprio visual) importa este arquivo primeiro. */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2b4d9c;
+    --primary-deep: #1e3a7a;
+    --primary-tint: #eef2ff;
+    --accent: #f5c22c;
+    --accent-ink: #4a3300;
+
+    --paper: #faf4e8;
+    --card: #ffffff;
+    --ink: #22283f;
+    --ink-soft: #5a6178;
+    --ink-faint: #9298b0;
+    --line: #e7e2d6;
+
+    --good: #2f7a52;
+    --good-tint: #e6f4ec;
+    --danger: #d60000;
+
+    --shadow-sm: 0 2px 8px rgba(30, 58, 122, 0.06);
+    --shadow-md: 0 12px 28px rgba(30, 58, 122, 0.10);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --topbar-height: 64px;
+    --sidebar-width: 280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', 'Segoe UI', Arial, sans-serif;
+    background: var(--primary-tint);
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ---- componentes reutilizáveis ---- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 13px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--accent);
+}
+
+.btn-primary:hover {
+    background: var(--primary-deep);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--line);
+}
+
+.btn-ghost:hover {
+    border-color: var(--primary);
+    background: var(--primary-tint);
+}
+
+.card {
+    background: var(--card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.badge-live {
+    background: var(--good-tint);
+    color: var(--good);
+}
+
+.badge-idle {
+    background: var(--primary-tint);
+    color: var(--ink-soft);
+}
+
+.avatar-stack {
+    display: flex;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    border: 2px solid var(--card);
+    margin-left: -10px;
+    flex: none;
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--ink-soft);
+}
+
+.empty-state .bx {
+    font-size: 40px;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

@@ -3,109 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menttis</title>
-    <link rel="stylesheet" href="css/entrar_grupo.css">
+    <title>Entrar em grupo - Menttis</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/grupos.css">
 </head>
-<body>
-    <!--By gabbi-fef and M4luLima-->
-    <!-- Navbar -->
-    <header class="navbar">
-        <div class="icons">
-            <div class="menu-icon" id="menuBtn">☰</div>
-            <img src="img/sino.png" alt="sino" class="noti">
-            <img src="img/logo2.png" alt="menttis" class="imglogo">
-            <div class="logo">Menttis</div>
-        </div>
-        <div class="caixa-pesquisa">
-            <img src="img/lupa.png" class="icone-lupa" alt="lupa">
-            <input type="text" placeholder="Pesquisar">
-        </div>
-    </header>
+<body data-page="entrar_grupo">
+    <div id="app-shell"></div>
 
-    <!-- Menu lateral -->
-    <nav class="menulateral" id="menulateral">
-        <div class="topo-menu">
-            <img src="img/logo2.png" class="logomen">
-            <h2 class="nomemenu">Menttis</h2>
-        </div>
-        <ul>
-            <li><img src="img/juntar.png" class="icones"><a href="entrar_grupo.html">Juntar ao grupo</a></li>
-            <li><img src="img/criar.png" class="icones"><a href="criar_grupo.html">Criar grupo</a></li>
-            <li><img src="img/config.png" class="icones"><a href="menuLateral_config.html">Configurações</a></li>
-            <li><img src="img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html">Ajuda & feedback</a></li>
-            <li><img src="img/casa.png" class="icones"><a href="menu.html">Início</a></li>
-        </ul>
-        <button class="logout"><img src="img/sair.png" class="icones"><a href="pc/pagina_login_pc.html"> Sair</a></button>
-    </nav>
-
-    <!-- Conteúdo principal -->
-    <main class="container" id="mainContent">
-        <div class="join-card">
-            <!-- título e descrição exatamente como no modelo -->
+    <main class="page form-shell">
+        <div class="card form-card">
             <h1>Junte-se a um grupo</h1>
             <p>Insira um link de convite.</p>
 
-            <form class="join-form" action="#" method="post">
-                <!-- Caixa de input arredondada com fonte suave -->
-                <input type="text" class="input-link" placeholder="Link de convite" aria-label="Link de convite do grupo">
-                <button type="submit" class="btn-entrar">Entrar</button>
+            <form class="join-form" id="formEntrarGrupo" action="#" method="post">
+                <div class="form-group">
+                    <input type="text" class="input-link" placeholder="Link de convite" aria-label="Link de convite do grupo" name="linkConvite">
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
-            <div class="link-helper">
+            <div class="info-text">
                 ✨ Use o link compartilhado pelo administrador
             </div>
         </div>
     </main>
 
-
-    <!-- JavaScript para abrir/fechar o menu -->
+    <script src="js/shell.js"></script>
     <script>
-        (function() {
-            const menu = document.getElementById('menulateral');
-            const menuBtn = document.getElementById('menuBtn');
-            const main = document.getElementById('mainContent');
-            const MENU_WIDTH = 300;       // largura real do menu (CSS)
-            let isMenuOpen = false;
-
-            // garantir estado inicial correto (menu fechado visualmente)
-            if (menu) {
-                menu.style.left = '-300px';
+        const form = document.getElementById('formEntrarGrupo');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const link = document.querySelector('input[name="linkConvite"]').value.trim();
+            if (link === '') {
+                alert('Cole o link de convite do grupo.');
+                return;
             }
-            if (main) {
-                main.style.marginLeft = '0px';
-            }
-
-            if (menuBtn) {
-                menuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (!isMenuOpen) {
-                        // abre menu
-                        menu.style.left = '0px';
-                        main.style.marginLeft = MENU_WIDTH + 'px';
-                        isMenuOpen = true;
-                    } else {
-                        // fecha menu
-                        menu.style.left = '-' + MENU_WIDTH + 'px';
-                        main.style.marginLeft = '0px';
-                        isMenuOpen = false;
-                    }
-                });
-            }
-
-            document.addEventListener('click', (e) => {
-                if (isMenuOpen && !menu.contains(e.target) && (!menuBtn || !menuBtn.contains(e.target))) {
-                    menu.style.left = '-' + MENU_WIDTH + 'px';
-                    if (main) main.style.marginLeft = '0px';
-                    isMenuOpen = false;
-                }
-            });
-
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768 && isMenuOpen) {
-                }
-            });
-        })();
+            alert('Pedido enviado! Assim que o grupo aceitar, ele aparece em "Meus grupos".');
+            window.location.href = 'meus_grupos.html';
+        });
     </script>
-
 </body>
 </html>

@@ -3,80 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../inicial/img/logo2.png" type="image/x-icon">
     <title>Configurações - Menttis</title>
-    <link rel="stylesheet" href="css/menuLateral_config.css">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/config.css">
 </head>
-<body>
+<body data-page="config">
+    <div id="app-shell"></div>
 
-<input type="checkbox" id="menulat"> 
-    
-    <header class="navbar">
-        <label for="menulat" class="menu-icon">☰</label>
+    <main class="page">
+        <div class="settings-container">
+            <section class="settings-form">
+                <h1>Configurações</h1>
 
-        <div class="logo">
-            <img src="../inicial/img/logo2.png" alt="Menttis Logo">
-            <span>Menttis</span>
+                <label>Username</label>
+                <input id="username" type="text" placeholder="Username">
+
+                <label>Email</label>
+                <input id="email" type="email" placeholder="Email">
+
+                <label>Celular</label>
+                <input id="telefone" type="text" placeholder="(  ) _____-____">
+
+                <label>Senha</label>
+                <div class="password-field">
+                    <input id="senha" type="password" placeholder="Senha">
+                    <span id="toggleSenha" class="toggle-eye">👁️</span>
+                </div>
+
+                <button class="btn btn-primary" id="salvarBtn">Salvar</button>
+                <p id="mensagem" class="mensagem-sucesso"></p>
+                <p id="erro" class="mensagem-erro"></p>
+            </section>
+
+            <section class="image-area">
+                <div class="image-box">
+                    <span class="img-icon">🖼️</span>
+                </div>
+                <button class="btn btn-ghost">Alterar imagem</button>
+            </section>
         </div>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Pesquisar">
-        </div>
-
-        <img src="../inicial/img/sino.png" alt="sino" class="noti">
-    </header>
-
-    <nav class="menulateral">
-        <div class="topo-menu">
-            <img src="../inicial/img/logo2.png" class="logomen">
-            <h2 class="nomemenu">Menttis</h2>
-        </div>
-        <ul>
-            <li><img src="../inicial/img/juntar.png" class="icones"><a href="entrar_grupo.html"> Juntar ao grupo </a></li>
-            <li><img src="../inicial/img/criar.png" class="icones"><a href="criar_grupo.html"> Criar grupo</a></li>
-            <li><img src="../inicial/img/config.png" class="icones"><a href="menuLateral_config.html"> Configurações</a></li>
-            <li><img src="../inicial/img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html"> Ajuda & feedback</a></li>
-            <li><img src="../inicial/img/casa.png" class="icones"><a href="menu.html"> Início</a></li>
-        </ul>
-        <button class="logout"><img src="../inicial/img/sair.png" class="icones"> Sair</button>
-    </nav>
-
-
-    <main class="container">
-
-        <section class="settings-form">
-            <h1>Configurações</h1>
-
-            <label>Username</label>
-            <input id="username" type="text" placeholder="Username">
-
-            <label>Email</label>
-            <input id="email" type="email" placeholder="Email">
-
-            <label>Celular</label>
-            <input id="telefone" type="text" placeholder="(  ) _____-____">
-
-            <label>Senha</label>
-            <div class="password-field">
-                <input id="senha" type="password" placeholder="Senha">
-                <span id="toggleSenha" class="toggle-eye">👁️</span>
-            </div>
-
-            <button class="btn" id="salvarBtn">Salvar</button>
-            <p id="mensagem" class="mensagem-sucesso"></p>
-            <p id="erro" class="mensagem-erro"></p>
-        </section>
-
-        <section class="image-area">
-            <div class="image-box">
-                <span class="img-icon">🖼️</span>
-            </div>
-
-            <button class="btn">Alterar imagem</button>
-        </section>
-
     </main>
 
+    <script src="js/shell.js"></script>
     <script>
         const username = document.getElementById("username");
         const email = document.getElementById("email");
@@ -89,7 +58,6 @@
 
         function erro(msg) {
             erroMsg.textContent = msg;
-            erroMsg.style.color = "#d60000";
             setTimeout(() => erroMsg.textContent = "", 4000);
         }
 
@@ -111,7 +79,6 @@
         });
 
         btnSalvar.addEventListener("click", () => {
-
             const regexUsuario = /^[A-Za-z]+$/;
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
@@ -136,22 +103,14 @@
                 return;
             }
 
-            const dados = {
-                username: username.value,
-                email: email.value,
-                telefone: telefone.value,
-                senha: senha.value
-            };
-
+            const dados = { username: username.value, email: email.value, telefone: telefone.value, senha: senha.value };
             localStorage.setItem("dadosMenttis", JSON.stringify(dados));
 
             mensagem.textContent = "Informações salvas no Menttis!";
-            mensagem.style.color = "green";
-
             setTimeout(() => mensagem.textContent = "", 3000);
         });
 
-        window.onload = () => {
+        window.addEventListener('DOMContentLoaded', () => {
             const dados = JSON.parse(localStorage.getItem("dadosMenttis"));
             if (dados) {
                 username.value = dados.username;
@@ -159,18 +118,7 @@
                 telefone.value = dados.telefone;
                 senha.value = dados.senha;
             }
-        };
-
-        document.addEventListener('click', function(event) {
-            const menuLateral = document.querySelector('.menulateral');
-            const menuIcon = document.querySelector('.menu-icon');
-            const checkbox = document.getElementById('menulat');
-
-            if (checkbox && checkbox.checked && menuLateral && !menuLateral.contains(event.target) && !menuIcon.contains(event.target) && event.target !== checkbox) {
-                checkbox.checked = false;
-            }
         });
     </script>
-
 </body>
 </html>

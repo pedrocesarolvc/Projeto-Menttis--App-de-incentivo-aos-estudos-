@@ -3,47 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menttis</title>
-    <link rel="stylesheet" href="css/criar_grupo.css">
+    <title>Criar grupo - Menttis</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/grupos.css">
 </head>
-<body>
-    <header class="navbar">
-        <div class="icons">
-            <div class="menu-icon" id="menuBtn">☰</div>
-            <img src="img/sino.png" alt="sino" class="noti">
-            <img src="img/logo2.png" alt="menttis" class="imglogo">
-            <div class="logo">Menttis</div>
-        </div>
-        <div class="caixa-pesquisa">
-            <img src="img/lupa.png" class="icone-lupa" alt="lupa">
-            <input type="text" placeholder="Pesquisar">
-        </div>
-    </header>
+<body data-page="criar_grupo">
+    <div id="app-shell"></div>
 
-    <!-- Menu lateral -->
-    <nav class="menulateral" id="menulateral">
-        <div class="topo-menu">
-            <img src="img/logo2.png" class="logomen">
-            <h2 class="nomemenu">Menttis</h2>
-        </div>
-        <ul>
-            <li><img src="img/juntar.png" class="icones"><a href="entrar_grupo.html">Juntar ao grupo</a></li>
-            <li><img src="img/criar.png" class="icones"><a href="criar_grupo.html">Criar grupo</a></li>
-            <li><img src="img/config.png" class="icones"><a href="menuLateral_config.html">Configurações</a></li>
-            <li><img src="img/ajuda.png" class="icones"><a href="menuLateral_ajuda.html">Ajuda & feedback</a></li>
-            <li><img src="img/casa.png" class="icones"><a href="menu.html">Início</a></li>
-        </ul>
-        <button class="logout"><img src="img/sair.png" class="icones"><a href="pc/pagina_login_pc.html"> Sair</a></button>
-    </nav>
-
-    <!-- Conteúdo principal -->
-    <main class="container" id="mainContent">
-        <div class="create-card">
-            <h1>Crie seu Grupo!</h1>
+    <main class="page form-shell">
+        <div class="card form-card">
+            <h1>Crie seu grupo!</h1>
             <form id="formCriarGrupo" action="#" method="post">
                 <div class="form-group">
                     <label>📌 Escolha um nome para o grupo.</label>
-                    <input type="text" class="input-moderno" placeholder="Ex: Matemática Enem, Coders, Estudos Livres" name="nomeGrupo" required>
+                    <input type="text" class="input-moderno" placeholder="Ex: Matemática ENEM, Coders, Estudos Livres" name="nomeGrupo" required>
                 </div>
 
                 <div class="form-group">
@@ -51,7 +25,7 @@
                     <textarea class="textarea-moderno" placeholder="Descreva o foco do grupo, objetivos ou regras (opcional mas recomendado)" name="descricao" rows="3"></textarea>
                 </div>
 
-                <button type="submit" class="btn-criar">Criar Grupo</button>
+                <button type="submit" class="btn btn-primary">Criar grupo</button>
                 <div class="info-text">
                     🌟 Seu grupo ficará visível para outros estudantes
                 </div>
@@ -59,58 +33,19 @@
         </div>
     </main>
 
-
-    <!-- JavaScript para abrir/fechar o menu -->
+    <script src="js/shell.js"></script>
     <script>
-        (function() {
-            const menu = document.getElementById('menulateral');
-            const menuBtn = document.getElementById('menuBtn');
-            const mainContent = document.getElementById('mainContent');
-            const MENU_WIDTH = 300;
-            
-            let isMenuOpen = false;
-
-            if (menu) menu.style.left = '-300px';
-            if (mainContent) mainContent.style.marginLeft = '0px';
-
-            if (menuBtn) {
-                menuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (!isMenuOpen) {
-                        menu.style.left = '0px';
-                        mainContent.style.marginLeft = MENU_WIDTH + 'px';
-                        isMenuOpen = true;
-                    } else {
-                        menu.style.left = '-' + MENU_WIDTH + 'px';
-                        mainContent.style.marginLeft = '0px';
-                        isMenuOpen = false;
-                    }
-                });
+        const form = document.getElementById('formCriarGrupo');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nomeGrupo = document.querySelector('input[name="nomeGrupo"]').value.trim();
+            if (nomeGrupo === '') {
+                alert('Por favor, escolha um nome para o grupo.');
+                return;
             }
-
-            document.addEventListener('click', (e) => {
-                if (isMenuOpen && !menu.contains(e.target) && (!menuBtn || !menuBtn.contains(e.target))) {
-                    menu.style.left = '-' + MENU_WIDTH + 'px';
-                    if (mainContent) mainContent.style.marginLeft = '0px';
-                    isMenuOpen = false;
-                }
-            });
-        })();
-
-                const form = document.getElementById('formCriarGrupo');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const nomeInput = document.querySelector('input[name="nomeGrupo"]');
-                const nomeGrupo = nomeInput ? nomeInput.value.trim() : '';
-                if (nomeGrupo === '') {
-                    alert('Por favor, escolha um nome para o grupo.');
-                    return;
-                }
-                alert(`Grupo "${nomeGrupo}" criado com sucesso!`);
-            });
-        }
+            alert(`Grupo "${nomeGrupo}" criado com sucesso!`);
+            window.location.href = 'meus_grupos.html';
+        });
     </script>
-
 </body>
 </html>
