@@ -51,6 +51,16 @@ const MENTTIS_SHELL_HTML = `
     const slot = document.getElementById('app-shell');
     if (!slot) return;
 
+    // O ícone do menu (☰), da busca e o de "Meus grupos" vêm da fonte de
+    // ícones Boxicons. Carregando aqui em vez de exigir a tag <link> em
+    // cada página, o ícone nunca mais some por alguém esquecer de incluir.
+    if (!document.querySelector('link[href*="boxicons"]')) {
+        const linkBoxicons = document.createElement('link');
+        linkBoxicons.rel = 'stylesheet';
+        linkBoxicons.href = 'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css';
+        document.head.appendChild(linkBoxicons);
+    }
+
     slot.innerHTML = MENTTIS_SHELL_HTML;
     document.body.classList.add('tem-shell');
 
