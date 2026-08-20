@@ -13,6 +13,18 @@ const MENTTIS_USUARIO = {
 
 const MENTTIS_GRUPOS = [
     {
+        id: "cloud-devops",
+        nome: "Grupo Cloud & DevOps",
+        materia: "Cloud Computing",
+        membros: [
+            { nome: "Ana Kimura", iniciais: "AK", cor: "#2b4d9c" },
+            { nome: "Bruno Matos", iniciais: "BM", cor: "#2f7a52" },
+            { nome: "Carla Souza", iniciais: "CS", cor: "#c98a1d" },
+            { nome: "Diego Farias", iniciais: "DF", cor: "#a34a9c" }
+        ],
+        desafio: { ativo: true, titulo: "CI/CD e Infraestrutura como Código", acertos: 4, total: 6 }
+    },
+    {
         id: "matematica-enem",
         nome: "Grupo Matemática ENEM",
         materia: "Matemática",
