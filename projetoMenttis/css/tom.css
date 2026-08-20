@@ -50,6 +50,38 @@
     color: var(--ink-faint);
 }
 
+/* Prévia ao vivo — mostra o mesmo selo/texto que aparecem no painel
+   principal, atualizada a cada clique nas opções acima. Sem isso, clicar
+   nas opções não muda nada visível *nesta* tela (o efeito só aparece em
+   menu.html/grupo_detalhe.html), o que parece que o seletor não faz
+   nada. */
+.tom-preview {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tom-preview-rotulo {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--ink-faint);
+}
+
+.tom-preview p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+    flex-basis: 100%;
+}
+
 .tom-opcoes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

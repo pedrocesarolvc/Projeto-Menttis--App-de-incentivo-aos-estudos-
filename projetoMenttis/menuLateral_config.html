@@ -31,6 +31,12 @@
                     <span>Mais emoji, mais comemoração</span>
                 </button>
             </div>
+
+            <div class="tom-preview" id="tom-preview">
+                <span class="tom-preview-rotulo">Prévia:</span>
+                <span class="badge badge-live" id="preview-badge">Desafio ativo</span>
+                <p id="preview-texto" data-texto-equilibrado="Bora continuar a sequência de hoje?" data-texto-direto="Continue sua sequência de estudos." data-texto-animado="Bora continuar a sequência de hoje? 🚀"></p>
+            </div>
         </section>
 
         <div class="settings-container">
@@ -69,6 +75,20 @@
     <script src="js/shell.js"></script>
     <script>
         menttisInicializarSeletorTom('#seletor-tom');
+
+        // Mantém a prévia de "Aparência" refletindo o tom escolhido, sem
+        // precisar navegar pra outra tela pra ver o efeito de verdade —
+        // é o mesmo selo/texto que aparecem no painel principal.
+        function atualizarPreviaTom() {
+            const badge = document.getElementById('preview-badge');
+            badge.className = menttisClasseBadgeAtiva(true);
+            badge.textContent = menttisTextoComFogo('Desafio ativo');
+            menttisAplicarTextosTom();
+        }
+        document.querySelectorAll('#seletor-tom [data-tom-opcao]').forEach((botao) => {
+            botao.addEventListener('click', atualizarPreviaTom);
+        });
+        atualizarPreviaTom();
 
         const username = document.getElementById("username");
         const email = document.getElementById("email");
