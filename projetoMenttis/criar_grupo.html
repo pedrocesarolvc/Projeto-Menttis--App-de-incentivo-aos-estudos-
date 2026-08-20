@@ -2,11 +2,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script src="js/tom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar grupo - Menttis</title>
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/grupos.css">
+    <link rel="stylesheet" href="css/tom.css">
 </head>
 <body data-page="criar_grupo">
     <div id="app-shell"></div>
@@ -16,18 +18,18 @@
             <h1>Crie seu grupo!</h1>
             <form id="formCriarGrupo" action="#" method="post">
                 <div class="form-group">
-                    <label>📌 Escolha um nome para o grupo.</label>
+                    <label><span class="emoji-deco">📌</span> Escolha um nome para o grupo.</label>
                     <input type="text" class="input-moderno" placeholder="Ex: Matemática ENEM, Coders, Estudos Livres" name="nomeGrupo" required>
                 </div>
 
                 <div class="form-group">
-                    <label>✏️ Crie uma descrição.</label>
+                    <label><span class="emoji-deco">✏️</span> Crie uma descrição.</label>
                     <textarea class="textarea-moderno" placeholder="Descreva o foco do grupo, objetivos ou regras (opcional mas recomendado)" name="descricao" rows="3"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Criar grupo</button>
                 <div class="info-text">
-                    🌟 Seu grupo ficará visível para outros estudantes
+                    <span class="emoji-deco">🌟</span> Seu grupo ficará visível para outros estudantes
                 </div>
             </form>
         </div>

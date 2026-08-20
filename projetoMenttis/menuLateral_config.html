@@ -2,16 +2,37 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <script src="js/tom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações - Menttis</title>
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/config.css">
+    <link rel="stylesheet" href="css/tom.css">
 </head>
 <body data-page="config">
     <div id="app-shell"></div>
 
     <main class="page">
+        <section class="card tom-secao">
+            <h2>Aparência</h2>
+            <p>Controla o quanto de decoração (emoji, comemoração) aparece pelo app — a mecânica de pontos e sequência continua a mesma nos três.</p>
+            <div class="tom-opcoes" id="seletor-tom">
+                <button type="button" class="tom-opcao" data-tom-opcao="direto">
+                    <strong>Direto</strong>
+                    <span>Sóbrio, sem emoji nem comemoração</span>
+                </button>
+                <button type="button" class="tom-opcao" data-tom-opcao="equilibrado">
+                    <strong>Equilibrado</strong>
+                    <span>O padrão do Menttis</span>
+                </button>
+                <button type="button" class="tom-opcao" data-tom-opcao="animado">
+                    <strong>Animado</strong>
+                    <span>Mais emoji, mais comemoração</span>
+                </button>
+            </div>
+        </section>
+
         <div class="settings-container">
             <section class="settings-form">
                 <h1>Configurações</h1>
@@ -47,6 +68,8 @@
 
     <script src="js/shell.js"></script>
     <script>
+        menttisInicializarSeletorTom('#seletor-tom');
+
         const username = document.getElementById("username");
         const email = document.getElementById("email");
         const telefone = document.getElementById("telefone");

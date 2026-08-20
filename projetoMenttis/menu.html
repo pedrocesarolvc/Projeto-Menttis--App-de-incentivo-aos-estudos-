@@ -2,12 +2,16 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- Carrega cedo e sem defer: decide o data-tom do <html> antes da
+         página desenhar, pra não piscar o tom errado (ver js/tom.js). -->
+    <script src="js/tom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menttis</title>
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/grupos.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tom.css">
 </head>
 <body data-page="menu">
     <div id="app-shell"></div>
@@ -15,7 +19,7 @@
     <main class="page">
         <section class="dashboard-header">
             <h1 id="saudacao">Olá!</h1>
-            <p>Bora continuar a sequência de hoje?</p>
+            <p data-texto-equilibrado="Bora continuar a sequência de hoje?" data-texto-direto="Continue sua sequência de estudos." data-texto-animado="Bora continuar a sequência de hoje? 🚀"></p>
         </section>
 
         <section class="stats-row">
@@ -77,9 +81,10 @@
         document.getElementById('valor-xp').textContent = `${MENTTIS_USUARIO.xp} / ${MENTTIS_USUARIO.xpProximoNivel} XP`;
         document.getElementById('valor-sequencia').textContent = `${MENTTIS_USUARIO.sequenciaDias} dias`;
         document.getElementById('barra-xp').style.width = Math.round((MENTTIS_USUARIO.xp / MENTTIS_USUARIO.xpProximoNivel) * 100) + '%';
+        menttisAplicarTextosTom();
 
         document.getElementById('btn-estudar-solo').addEventListener('click', () => {
-            alert('Em breve: sessão de estudo solo com perguntas geradas por IA. 🎯');
+            alert('Em breve: sessão de estudo solo com perguntas geradas por IA.' + menttisSufixo('🎯'));
         });
 
         const trilha = document.getElementById('trilha-grupos');
@@ -91,7 +96,7 @@
                 <div class="card-subject">${grupo.materia}</div>
                 <div class="card-name">${grupo.nome}</div>
                 <div class="avatar-stack">${grupo.membros.slice(0, 3).map((m) => `<span class="avatar" style="background:${m.cor}">${m.iniciais}</span>`).join('')}</div>
-                <span class="badge ${grupo.desafio.ativo ? 'badge-live' : 'badge-idle'}">${grupo.desafio.ativo ? '🔥 Desafio ativo' : 'Sem desafio'}</span>
+                <span class="${menttisClasseBadgeAtiva(grupo.desafio.ativo)}">${grupo.desafio.ativo ? menttisTextoComFogo('Desafio ativo') : 'Sem desafio'}</span>
             `;
             trilha.appendChild(a);
         });

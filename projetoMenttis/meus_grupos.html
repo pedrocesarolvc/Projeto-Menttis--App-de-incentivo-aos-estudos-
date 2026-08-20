@@ -2,11 +2,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script src="js/tom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus grupos - Menttis</title>
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/grupos.css">
+    <link rel="stylesheet" href="css/tom.css">
 </head>
 <body data-page="meus_grupos">
     <div id="app-shell"></div>
@@ -43,7 +45,7 @@
                             <div class="card-subject">${grupo.materia}</div>
                             <div class="card-name">${grupo.nome}</div>
                         </div>
-                        <span class="badge ${grupo.desafio.ativo ? 'badge-live' : 'badge-idle'}">${grupo.desafio.ativo ? '🔥 Ativo' : 'Parado'}</span>
+                        <span class="${menttisClasseBadgeAtiva(grupo.desafio.ativo)}">${grupo.desafio.ativo ? menttisTextoComFogo('Ativo') : 'Parado'}</span>
                     </div>
                     <div class="avatar-stack">${grupo.membros.slice(0, 4).map((m) => `<span class="avatar" style="background:${m.cor}">${m.iniciais}</span>`).join('')}</div>
                     <div class="card-footer">

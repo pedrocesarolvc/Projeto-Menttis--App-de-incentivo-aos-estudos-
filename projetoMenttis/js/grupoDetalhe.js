@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="card-subject">${grupo.materia}</div>
                 <h1>${grupo.nome}</h1>
             </div>
-            <span class="badge ${grupo.desafio.ativo ? 'badge-live' : 'badge-idle'}">${grupo.desafio.ativo ? '🔥 Raid em andamento' : 'Grupo parado'}</span>
+            <span class="${menttisClasseBadgeAtiva(grupo.desafio.ativo)}">${grupo.desafio.ativo ? menttisTextoComFogo('Raid em andamento') : 'Grupo parado'}</span>
         </div>
 
         <div class="detail-grid">
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
 
     const btnSala = document.getElementById('btn-entrar-sala');
-    if (btnSala) btnSala.addEventListener('click', () => alert('Em breve: a sala de desafio em grupo, com perguntas geradas por IA. ⚔️'));
+    if (btnSala) btnSala.addEventListener('click', () => alert('Em breve: a sala de desafio em grupo, com perguntas geradas por IA.' + menttisSufixo('⚔️')));
 
     const btnIniciar = document.getElementById('btn-iniciar-desafio');
-    if (btnIniciar) btnIniciar.addEventListener('click', () => alert('Em breve: escolha um assunto e a IA monta o desafio pro grupo. ⚔️'));
+    if (btnIniciar) btnIniciar.addEventListener('click', () => alert('Em breve: escolha um assunto e a IA monta o desafio pro grupo.' + menttisSufixo('⚔️')));
 
     document.getElementById('btn-copiar').addEventListener('click', function () {
         const link = document.getElementById('link-convite');
