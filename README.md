@@ -126,6 +126,10 @@ não `file://`.
    gravar algo.
 3. Refazer o fluxo solo e o de raid em grupo sobre o front atual, já
    ligados ao motor de IA.
+4. Planos e cota diária de geração — o modelo de monetização já está
+   desenhado (planos, limites, o que cada um libera) em
+   [`docs/modelo-de-negocio.md`](docs/modelo-de-negocio.md); falta
+   implementar quando existir conta de usuário de verdade.
 
 Veja o [`CHANGELOG.md`](CHANGELOG.md) pro histórico completo do que já
 foi feito, e [`Relatorio_Refatoracao_Menttis.md`](Relatorio_Refatoracao_Menttis.md)
