@@ -76,7 +76,7 @@ Independente do nível, o plano da conta determina:
 | Atividades por raid | 3 | 3 | 3 |
 | Modelos de IA disponíveis | 1 (base) | +2 (total 3) | +2 (herda do Aprendiz) |
 | Estilos de pergunta | Base | Base | Mais estilos, além dos já existentes |
-| Velocidade de geração | Normal | Normal | Prioridade na fila |
+| Velocidade de geração | Normal | Acelerada | Prioridade na fila |
 | Elaboração do conteúdo | Cresce com o nível (todos os planos) | Cresce com o nível (todos os planos) | Cresce com o nível (todos os planos) |
 
 Notas sobre a tabela:
