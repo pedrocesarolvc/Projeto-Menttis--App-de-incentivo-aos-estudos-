@@ -17,9 +17,8 @@ servem pra qualquer pessoa estudando qualquer coisa. Veja o
 
 ## Estado atual
 
-**Só o front-end existe por enquanto**, de propósito — a decisão foi
-consolidar o HTML/CSS/JS antes de começar o motor de IA e o backend em
-Python. Isso significa:
+O front-end (`projetoMenttis/`) e o começo do backend (`backend/`) já
+existem; ainda não estão ligados um no outro. Isso significa:
 
 - Login, cadastro e recuperação de senha têm validação e navegam
   corretamente, mas não persistem nada de verdade — é só o formulário e a
@@ -32,6 +31,13 @@ Python. Isso significa:
   Python vai substituir.
 - A tela de Configurações salva os campos de conta em `localStorage`
   (um jeito temporário de "lembrar" os dados sem servidor).
+- **O motor de perguntas (`backend/`) já roda e já tem uma rota de API
+  de verdade** (`POST /api/atividades/gerar`), mas ainda usa um provedor
+  de IA falso — sem chamar nenhuma IA de verdade, sem custo, sem chave.
+  A escolha de qual modelo real usar foi deixada de propósito como
+  parâmetro trocável; ver
+  [`docs/arquitetura-gerador.md`](docs/arquitetura-gerador.md). O front
+  ainda não chama essa API — os dois existem lado a lado por enquanto.
 
 ## Estrutura
 
@@ -75,6 +81,24 @@ dentro do próprio `shell.js`, como uma string, então funciona dos dois
 jeitos. Ver [`CHANGELOG.md`](CHANGELOG.md) pra mais detalhes desse (e de
 outros) bug.
 
+```
+backend/
+├── app/
+│   ├── main.py                 Rotas da API (FastAPI)
+│   ├── esquemas.py             Contrato de uma atividade (Pydantic)
+│   ├── config.py               Qual provedor de IA cada plano usa
+│   └── geracao/
+│       ├── gerador.py          Orquestra cache → roteador → provedor → validação
+│       ├── roteador_modelo.py  Escolhe o provedor a partir do plano
+│       ├── validacao.py        Confere se a atividade gerada é válida
+│       ├── cache.py            Evita gerar de novo o que já foi gerado
+│       └── provedores/         Um arquivo por provedor de IA (hoje só o falso funciona)
+└── tests/
+```
+
+Detalhe de cada camada em
+[`docs/arquitetura-gerador.md`](docs/arquitetura-gerador.md).
+
 ### O sistema de "tom"
 
 Em Configurações existe um seletor com três opções — **Direto**,
@@ -95,6 +119,8 @@ A preferência fica em `localStorage` e vale pro navegador, não pra
 conta.
 
 ## Como rodar
+
+### Front-end (`projetoMenttis/`)
 
 Não precisa instalar nada — é HTML/CSS/JS puro. Mas **precisa abrir por
 um servidor local**, não com duplo clique no arquivo: o menu lateral e
@@ -117,15 +143,33 @@ Se preferir, qualquer outro servidor estático serve (a extensão "Live
 Server" do VS Code, `npx serve`, etc.) — o importante é ser `http://`,
 não `file://`.
 
+### Backend (`backend/`)
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate        # Windows (macOS/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Sobe em `http://localhost:8000/docs` (Swagger, documentação interativa
+gerada automaticamente). Detalhes de como o gerador é montado por
+dentro em [`docs/arquitetura-gerador.md`](docs/arquitetura-gerador.md).
+Rodar os testes: `pytest` (de dentro de `backend/`, com o `.venv`
+ativado).
+
 ## Próximos passos
 
-1. Motor de perguntas por IA (gera questões estilo cloze a partir de
-   qualquer assunto digitado).
-2. Backend em Python — substitui `js/mockData.js` por dados de verdade,
-   com banco de dados. É nesse momento que criar/entrar em grupo passa a
-   gravar algo.
-3. Refazer o fluxo solo e o de raid em grupo sobre o front atual, já
-   ligados ao motor de IA.
+1. ~~Motor de perguntas por IA~~ — existe e roda
+   ([`docs/arquitetura-gerador.md`](docs/arquitetura-gerador.md)), mas
+   ainda com um provedor de IA falso; falta decidir e ligar um modelo
+   real.
+2. Ligar o front no backend — hoje `js/mockData.js` e a rota de API
+   existem lado a lado, sem se falar.
+3. Persistência de verdade (banco de dados) — é nesse momento que
+   criar/entrar em grupo passa a gravar algo, e conta de usuário passa
+   a existir.
 4. Planos e cota diária de geração — o modelo de monetização já está
    desenhado (planos, limites, o que cada um libera) em
    [`docs/modelo-de-negocio.md`](docs/modelo-de-negocio.md); falta

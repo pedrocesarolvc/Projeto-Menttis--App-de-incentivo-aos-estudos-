@@ -43,6 +43,20 @@ encarar desafios juntos) continuam as mesmas; o que muda é o alcance.
   Existe pra atender um público mais velho/profissional sem excluir quem
   gosta do app mais "brincalhão". Guardado em `localStorage`, trocável a
   qualquer momento.
+- **`docs/modelo-de-negocio.md`**: os três planos (Gratuito, Aprendiz,
+  Mestre), por que existe cota diária de geração (custo real de IA, não
+  psicologia de engajamento tipo "vidas" do Duolingo), e a separação
+  entre nível/XP (controla elaboração, de graça pra todo mundo) e plano
+  (controla quantidade, modelo de IA, estilo de pergunta e velocidade).
+  Marcado como hipótese — números não validados contra custo real ainda.
+- **`backend/`**: primeira versão do motor de geração de atividades,
+  rodando localmente (FastAPI). Arquitetura em camadas — cache, roteador
+  de modelo, provedor de IA, validação — documentada em
+  [`docs/arquitetura-gerador.md`](docs/arquitetura-gerador.md). Hoje usa
+  um provedor de IA falso (sem custo, sem chave, sem chamar nenhuma API
+  de verdade) de propósito: a escolha de qual modelo real usar ficou
+  deliberadamente em aberto, como parâmetro trocável via
+  `app/config.py`. Front e backend ainda não se falam.
 
 ### Corrigido
 
