@@ -9,6 +9,14 @@ falso (sem chamar nenhuma API de verdade ainda — ver seção "Provedores").
 O contrato e as camadas já estão desenhados pra aguentar provedores
 reais sem precisar reescrever nada, só plugar.
 
+**Pendência de nomenclatura (ainda não aplicada no código):** o que
+este documento e o código chamam de `Atividade` hoje (uma pergunta
+isolada) vai virar `Questao`. "Atividade" passa a significar uma sessão
+de 5-10 questões geradas de uma vez — ver
+[`modelo-de-negocio.md`](modelo-de-negocio.md#questão-atividade-e-tokens-de-questão)
+pra o motivo. O `app/esquemas.py` ainda não foi atualizado; quando for,
+esta seção muda junto.
+
 ## O contrato de uma atividade
 
 Toda atividade gerada — solo ou de raid — tem o mesmo formato,
