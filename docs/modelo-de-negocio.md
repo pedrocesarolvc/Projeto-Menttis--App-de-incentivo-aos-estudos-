@@ -71,8 +71,8 @@ Independente do nível, o plano da conta determina:
 
 | | Gratuito | Aprendiz | Mestre |
 |---|---|---|---|
-| Atividades solo / dia | **120** (hipótese — ver nota no topo) | 510 | Sem limite |
-| Raids em grupo / dia | 2 | 4 (+2) | Sem limite |
+| Atividades solo / dia | **120** (hipótese — ver nota no topo) | 510 | **1500** (hipótese) |
+| Raids em grupo / dia | 2 | 4 (+2) | **16** (hipótese) |
 | Atividades por raid | 3 | 3 | 3 |
 | Modelos de IA disponíveis | 1 (base) | +2 (total 3) | +2 (herda do Aprendiz) |
 | Estilos de pergunta | Base | Base | Mais estilos, além dos já existentes |
@@ -88,8 +88,18 @@ Notas sobre a tabela:
   primeira versão da proposta tinha "sem limite" no Aprendiz; foi trocado
   por um teto alto (510) porque "ilimitado" no plano de entrada, mais
   barato, é como serviço de assinatura quebra a própria margem — quem
-  usa pesado custa mais em API do que paga. "Sem limite" de verdade fica
-  reservado pro Mestre, onde o preço presumivelmente aguenta.
+  usa pesado custa mais em API do que paga.
+- **"Sem limite" no Mestre também foi abandonado — nenhum plano tem
+  literalmente "ilimitado".** Com escala (não 1, mas, digamos, 200
+  contas Mestre gerando ao mesmo tempo), "ilimitado" vira um cheque em
+  branco de custo de API. Em vez disso, o Mestre tem um teto alto o
+  bastante pra nunca ser sentido em uso normal, mas que exige várias
+  horas seguidas de uso pra alcançar — a mesma lógica dos limites de uso
+  do Claude Pro: generoso ao ponto de parecer ilimitado no dia a dia,
+  sem ser de verdade. Conta grosseira: numa atividade rápida
+  (10-15 segundos pra responder), uma hora de estudo contínuo gera
+  ~150-200 atividades; 1500/dia representa algo como 8-10 horas
+  seguidas de uso — um dia inteiro dedicado, não um estudo normal.
 
 ## Quem "é dono" da cota de uma raid
 
